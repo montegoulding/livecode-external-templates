@@ -1,0 +1,13 @@
+//
+//  ___PROJECTNAMEASIDENTIFIER___.lcidlc
+//  ___PROJECTNAME___
+//
+//  Created by ___FULLUSERNAME___ on ___DATE___.
+//  Copyright ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
+//
+
+// The name of the external (note external name must be all lowercase!)
+external ___PROJECTNAMEASIDENTIFIER___
+
+use objc-objects
+use c++-naming
