@@ -20,5 +20,5 @@ Build LiveCode for OS X and then symlink lcidlc to somewhere on your `$PATH`
 The templates assume you have cloned the LiveCode repo to `~/livecode` and will
 look for the shell scripts in `~/livecode/lcidlc/` and headers in
 `~/livecode/lcidlc/include/`. If for some reason you cloned the repo elsewhere
-then change LIVECODE_REPO_ROOT in the project build settings before trying to
+then change `LIVECODE_REPO_ROOT` in the project build settings before trying to
 build.

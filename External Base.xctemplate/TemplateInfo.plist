@@ -1,38 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<key>Identifier</key>
-	<string>com.merg.livecode.externals.base</string>
-	<key>Kind</key>
-	<string>Xcode.Xcode3.ProjectTemplateUnitKind</string>
-	<key>Definitions</key>
 	<dict>
-		<key>___PACKAGENAMEASIDENTIFIER___.lcidl</key>
+		<key>Identifier</key>
+		<string>com.merg.livecode.externals.base</string>
+		<key>Kind</key>
+		<string>Xcode.Xcode3.ProjectTemplateUnitKind</string>
+		<key>Definitions</key>
 		<dict>
-			<key>Path</key>
-			<string>___PACKAGENAMEASIDENTIFIER___.lcidl</string>
-			<key>TargetIndices</key>
-			<array>
-				<string>0</string>
-			</array>
-		</dict>
-		<key>___PACKAGENAMEASIDENTIFIER___.mm</key>
-		<dict>
-			<key>Path</key>
-			<string>___PACKAGENAMEASIDENTIFIER___.mm</string>
-			<key>TargetIndices</key>
-			<array>
-				<string>0</string>
-			</array>
-		</dict>
-		<key>___PACKAGENAMEASIDENTIFIER___.livecode</key>
-		<dict>
-			<key>Path</key>
-			<string>___PACKAGENAMEASIDENTIFIER___.livecode</string>
-			<key>TargetIndices</key>
-			<array/>
-		</dict>
+			<key>*:comments</key>
+			<string>//
+//  ___FILENAME___
+//  ___PROJECTNAME___
+//
+//  Created by ___FULLUSERNAME___ on ___DATE___.
+//___COPYRIGHT___
+//
+			</string>
+			<key>___PACKAGENAMEASIDENTIFIER___.lcidl</key>
+			<dict>
+				<key>Beginning</key>
+				<string></string>
+				<key>End</key>
+				<string></string>
+				<key>SubstituteMacros</key>
+				<true/>
+				<key>TargetIndices</key>
+				<array>
+					<string>0</string>
+				</array>
+			</dict>
+			<key>___PACKAGENAMEASIDENTIFIER___.lcidl:base</key>
+			<string>
+external ___VARIABLE_externalIdentifier___
+			</string>
+			<key>___PACKAGENAMEASIDENTIFIER___.lcidl:lcidlhooks</key>
+			<string>
+on startup call ___PACKAGENAMEASIDENTIFIER___Startup
+
+on shutdown call ___PACKAGENAMEASIDENTIFIER___Shutdown
+			</string>
+			<key>___PACKAGENAMEASIDENTIFIER___.livecode</key>
+			<dict>
+				<key>Path</key>
+				<string>___PACKAGENAMEASIDENTIFIER___.livecode</string>
+				<key>TargetIndices</key>
+				<array/>
+			</dict>
 	</dict>
 	<key>Options</key>
 	<array>
@@ -52,23 +66,47 @@
 			<key>NotPersisted</key>
 			<true/>
 		</dict>
+		<dict>
+			<key>Identifier</key>
+			<string>organizationName</string>
+			<key>Name</key>
+			<string>Organization Name:</string>
+			<key>Description</key>
+			<string>Your company&apos;s name</string>
+			<key>Type</key>
+			<string>text</string>
+			<key>Default</key>
+			<string>___FULLUSERNAME___</string>
+		</dict>
+		<dict>
+			<key>Identifier</key>
+			<string>externalIdentifier</string>
+			<key>Required</key>
+			<true/>
+			<key>Name</key>
+			<string>External Identifier:</string>
+			<key>Description</key>
+			<string>The identfier of your external</string>
+			<key>Default</key>
+			<string>com.yourcompany.yourexternal</string>
+			<key>EmptyReplacement</key>
+			<string>com.yourcompany.yourexternal</string>
+			<key>Type</key>
+			<string>text</string>
+		</dict>
 	</array>
 	<key>Nodes</key>
 	<array>
-		<string>___PACKAGENAMEASIDENTIFIER___.lcidl</string>
-		<string>___PACKAGENAMEASIDENTIFIER___.mm</string>
+		<string>___PACKAGENAMEASIDENTIFIER___.lcidl:comments</string>
+		<string>___PACKAGENAMEASIDENTIFIER___.lcidl:base</string>
 		<string>___PACKAGENAMEASIDENTIFIER___.livecode</string>
 	</array>
 	<key>Project</key>
 	<dict>
 		<key>SharedSettings</key>
 		<dict>
-			<key>CLANG_CXX_LIBRARY</key>
-			<string>libc++</string>
-			<key>ENABLE_BITCODE</key>
-			<string>NO</string>
-			<key>HEADER_SEARCH_PATHS</key>
-			<string>"$(LIVECODE_REPO_ROOT)/lcidlc/include"</string>
+			<key>LIVECODE_EXTERNAL_TEMPLATES_DIR</key>
+			<string>$(HOME)/Library/Developer/Xcode/Templates/Project Templates/LiveCode</string>
 			<key>LIVECODE_REPO_ROOT</key>
 			<string>$(HOME)/livecode</string>
 			<key>LIVECODE_TEST_EXTERNAL</key>
@@ -89,47 +127,5 @@
 			<dict/>
 		</dict>
 	</dict>
-	<key>Targets</key>
-	<array>
-		<dict>
-			<key>TargetIdentifier</key>
-			<string>com.merg.livecode.externals.external</string>
-		  <key>Name</key>
-			<string>___PACKAGENAMEASIDENTIFIER___</string>
-			<key>SharedSettings</key>
-			<dict>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-		</dict>
-			<key>Configurations</key>
-			<dict>
-				<key>Debug</key>
-				<dict/>
-				<key>Release</key>
-				<dict/>
-			</dict>
-			<key>BuildPhases</key>
-			<array>
-				<dict>
-					<key>Class</key>
-					<string>Sources</string>
-				</dict>
-				<dict>
-					<key>Class</key>
-					<string>Frameworks</string>
-				</dict>
-				<dict>
-					<key>Class</key>
-					<string>ShellScript</string>
-					<key>ShellPath</key>
-					<string>/bin/bash</string>
-					<key>ShellScript</key>
-					<string>sh &quot;$LIVECODE_REPO_ROOT/lcidlc/lclink.sh&quot;</string>
-				</dict>
-			</array>
-		</dict>
-	</array>
 </dict>
 </plist>
