@@ -17,7 +17,7 @@ if [[ ! -f "$ENGINE_CLASSPATH" ]]; then
 	cp "$ENGINE_CLASSES_FILE" "$ENGINE_CLASSPATH"
 fi
 
-CLASSPATH="$ENGINE_CLASSPATH:$ANDROID_SDK_ROOT/platforms/android-8/android.jar:$SRCROOT/$PRODUCT_NAME/libs"
+CLASSPATH="$ENGINE_CLASSPATH:$ANDROID_SDK_ROOT/platforms/$ANDROID_TARGET_PLATFORM/android.jar:$SRCROOT/$PRODUCT_NAME/libs"
 NDKBUILD=$ANDROID_NDK_ROOT/ndk-build
 
 JAVAC=$JAVA_SDK/bin/javac
@@ -26,18 +26,19 @@ JAR=$JAVA_SDK/bin/jar
 mkdir -p "$BUILT_PRODUCTS_DIR/native"
 
 echo "Building external stubs…"
-lcidlc "$SRCROOT/$PRODUCT_NAME/$PRODUCT_NAME.lcidl" "$DERIVED_FILE_DIR"
+mkdir -p "$DERIVED_FILE_DIR"
+lcidlc "$SRCROOT/$PRODUCT_NAME/$PRODUCT_NAME.lcidl" "$DERIVED_FILE_DIR/"
 
 echo "Building native code components…"
 export NDK_PROJECT_PATH="$BUILT_PRODUCTS_DIR/native"
-$NDKBUILD NDK_DEBUG=$DEBUG_FLAG NDK_APP_DEBUGGABLE=$DEBUGGABLE_FLAG -j $JCOUNT -s
+$NDKBUILD NDK_DEBUG=$DEBUG_FLAG NDK_APP_DEBUGGABLE=$DEBUGGABLE_FLAG NDK_APPLICATION_MK="$NDK_APPLICATION_MK" APP_BUILD_SCRIPT="$APP_BUILD_SCRIPT" -j $JCOUNT -s
 if [ $? != 0 ]; then
 	exit $?
 fi
 
 echo "Building java classes components…"
 mkdir -p "$BUILT_PRODUCTS_DIR/classes"
-"$JAVAC" -d "$BUILT_PRODUCTS_DIR/classes" -cp "$CLASSPATH" -sourcepath "$SRCROOT/$PRODUCT_NAME" "$SRCROOT/$PRODUCT_NAME/$NAME.java" "$DERIVED_FILE_DIR/LC.java"
+"$JAVAC" -d "$BUILT_PRODUCTS_DIR/classes" -cp "$CLASSPATH" -sourcepath "$SRCROOT/$PRODUCT_NAME" "$SRCROOT/$PRODUCT_NAME/$PRODUCT_NAME.java" "$DERIVED_FILE_DIR/LC.java"
 if [ $? != 0 ]; then
 	exit $?
 fi
@@ -50,8 +51,11 @@ if [ $? != 0 ]; then
 fi
 
 echo "Building lcext archive…"
-cp "$BUILT_PRODUCTS_DIR/libs/armeabi/lib$PRODUCT_NAME.so" "$SRCROOT/binaries/Android/External-armeabi"
-cp -r "$SRCROOT/libs/." "$SRCROOT/binaries/Android"
+cp "$BUILT_PRODUCTS_DIR/native/libs/armeabi/lib$PRODUCT_NAME.so" "$SRCROOT/binaries/Android/External-armeabi"
+
+if [[ -d "$SRCROOT/libs" ]]; then
+	cp -r "$SRCROOT/libs/." "$SRCROOT/binaries/Android"
+fi
 
 cd $SRCROOT/binaries
 

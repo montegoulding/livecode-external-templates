@@ -16,24 +16,38 @@
 	<dict>
 		<key>___PACKAGENAMEASIDENTIFIER___.java</key>
 		<dict>
-			<key>Path</key>
-			<string>___PACKAGENAMEASIDENTIFIER___.java</string>
+			<key>Beginning</key>
+			<string></string>
+			<key>End</key>
+			<string></string>
+			<key>SubstituteMacros</key>
+			<true/>
 			<key>TargetIndices</key>
-			<array>
-				<string>0</string>
-			</array>
+			<array/>
 		</dict>
-		<dict>
-			<key>___PACKAGENAMEASIDENTIFIER___.lcidl:java</key>
-			<string>
+		<key>___PACKAGENAMEASIDENTIFIER___.java:package</key>
+		<string>
+package ___VARIABLE_externalIdentifier___;
+		</string>
+		<key>___PACKAGENAMEASIDENTIFIER___.java:class</key>
+		<string>
+public class ___PROJECTNAMEASIDENTIFIER___ {
+
+  private static final String TAG = ___PROJECTNAMEASIDENTIFIER___.class.getSimpleName();
+
+}
+		</string>
+		<key>___PACKAGENAMEASIDENTIFIER___.lcidl:java</key>
+		<string>
 use java on android
-use nothing on ios, mac, windows, linux
-			</string>
-		</dict>
+use none on ios, mac, windows, linux
+		</string>
 	</dict>
 	<key>Nodes</key>
 	<array>
-		<string>___PACKAGENAMEASIDENTIFIER___.java</string>
+		<string>___PACKAGENAMEASIDENTIFIER___.java:package</string>
+		<string>___PACKAGENAMEASIDENTIFIER___.java:comments</string>
+		<string>___PACKAGENAMEASIDENTIFIER___.java:class</string>
 		<string>___PACKAGENAMEASIDENTIFIER___.lcidl:java</string>
 	</array>
 	<key>Project</key>
@@ -52,6 +66,8 @@ use nothing on ios, mac, windows, linux
 			<string>$(LIVECODE_EXTERNAL_TEMPLATES_DIR)/Application.mk</string>
 			<key>APP_BUILD_SCRIPT</key>
 			<string>$(LIVECODE_EXTERNAL_TEMPLATES_DIR)/Android.mk</string>
+			<key>ANDROID_TARGET_PLATFORM</key>
+			<string>android-8</string>
 		</dict>
 		<key>Configurations</key>
 		<dict>

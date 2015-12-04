@@ -106,7 +106,7 @@ on shutdown call ___PACKAGENAMEASIDENTIFIER___Shutdown
 		<key>SharedSettings</key>
 		<dict>
 			<key>LIVECODE_EXTERNAL_TEMPLATES_DIR</key>
-			<string>$(HOME)/Library/Developer/Xcode/Templates/Project Templates/LiveCode</string>
+			<string>$(HOME)/livecode-xcode-templates</string>
 			<key>LIVECODE_REPO_ROOT</key>
 			<string>$(HOME)/livecode</string>
 			<key>LIVECODE_TEST_EXTERNAL</key>
