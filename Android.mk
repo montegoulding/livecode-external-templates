@@ -7,10 +7,10 @@ TARGET_PLATFORM=$(ANDROID_TARGET_PLATFORM)
 LOCAL_MODULE := $(PRODUCT_NAME)
 
 LOCAL_SRC_FILES := \
-  $(DERIVED_FILE_DIR)/$(LOCAL_MODULE).lcidl.cpp
+  $(ANDROID_SOURCES)
 
 LOCAL_C_INCLUDES := \
-	$(LIVECODE_REPO_ROOT)/lcidlc/include
+	$(HEADER_SEARCH_PATHS)
 
 # Uncomment this line if you want to use C++ exceptions
 # LOCAL_CPPFLAGS += -frtti -fexceptions

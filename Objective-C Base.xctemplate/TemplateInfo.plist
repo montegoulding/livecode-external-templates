@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<dict>
+		<key>Identifier</key>
+		<string>com.merg.livecode.externals.objectivec</string>
+		<key>Ancestors</key>
+		<array>
+			<string>com.merg.livecode.externals.chooselanguage</string>
+		</array>
+		<key>Kind</key>
+		<string>Xcode.Xcode3.ProjectTemplateUnitKind</string>
+		<key>Definitions</key>
+		<dict>
+			<key>*:foundation</key>
+			<string>
+#import &lt;Foundation/Foundation.h&gt;
+			</string>
+		</dict>
+		<key>Options</key>
+		<array>
+			<dict>
+				<key>Identifier</key>
+				<string>languageChoice</string>
+				<key>Default</key>
+				<string>Objective-C</string>
+				<key>Values</key>
+				<array>
+					<string>Objective-C</string>
+					<string>Objective-C++</string>
+					<string>C</string>
+					<string>C++</string>
+				</array>
+	    </dict>
+		</array>
+	</dict>
+</plist>

@@ -6,7 +6,7 @@
 	<string>com.merg.livecode.externals.ios</string>
 	<key>Ancestors</key>
 	<array>
-		<string>com.merg.livecode.externals.apple-base</string>
+		<string>com.merg.livecode.externals.objectivec</string>
 	</array>
 	<key>Concrete</key>
 	<true/>
@@ -88,6 +88,8 @@
 		<dict>
 			<key>TargetIdentifier</key>
 			<string>com.merg.livecode.externals.external</string>
+			<key>Name</key>
+			<string>___PACKAGENAMEASIDENTIFIER___-iOS</string>
 			<key>ProductType</key>
 			<string>com.apple.product-type.library.static</string>
 			<key>SharedSettings</key>
@@ -95,6 +97,25 @@
 				<key>LIVECODE_DEP_FILE</key>
 				<string>$(SRCROOT)/___PACKAGENAME___/___PACKAGENAMEASIDENTIFIER___.ios</string>
 			</dict>
+			<key>BuildPhases</key>
+			<array>
+				<dict>
+					<key>Class</key>
+					<string>Sources</string>
+				</dict>
+				<dict>
+					<key>Class</key>
+					<string>Frameworks</string>
+				</dict>
+				<dict>
+					<key>Class</key>
+					<string>ShellScript</string>
+					<key>ShellPath</key>
+					<string>/bin/bash</string>
+					<key>ShellScript</key>
+					<string>sh &quot;$LIVECODE_REPO_ROOT/lcidlc/lclink.sh&quot;</string>
+				</dict>
+			</array>
 		</dict>
 		<dict>
 			<key>TargetIdentifier</key>
@@ -105,8 +126,6 @@
 		  <string>com.apple.product-type.application</string>
 		  <key>SharedSettings</key>
 		  <dict>
-		    <key>PRODUCT_NAME</key>
-		    <string>$(TARGET_NAME)</string>
 		    <key>INFOPLIST_FILE</key>
 				<string>___PACKAGENAME___/Info.plist</string>
 			</dict>

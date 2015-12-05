@@ -6,8 +6,6 @@ APP_PROJECT_PATH := $(NDK_PROJECT_PATH)
 
 APP_STL := gnustl_static
 
-$(call __ndk_info,APP_BUILD_SCRIPT: $(APP_BUILD_SCRIPT))
-
 ifeq ($(CONFIGURATION),Debug)
 
 APP_OPTIM := debug

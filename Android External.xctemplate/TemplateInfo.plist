@@ -6,12 +6,14 @@
 	<string>com.merg.livecode.externals.android</string>
 	<key>Ancestors</key>
 	<array>
-		<string>com.merg.livecode.externals.base</string>
+		<string>com.merg.livecode.externals.chooselanguage</string>
 	</array>
 	<key>Kind</key>
 	<string>Xcode.Xcode3.ProjectTemplateUnitKind</string>
 	<key>Concrete</key>
 	<true/>
+	<key>Description</key>
+	<string>This template is the starting point for a LiveCode external for Android.</string>
 	<key>Definitions</key>
 	<dict>
 		<key>___PACKAGENAMEASIDENTIFIER___.java</key>
@@ -43,12 +45,89 @@ use java on android
 use none on ios, mac, windows, linux
 		</string>
 	</dict>
-	<key>Nodes</key>
+	<key>Options</key>
 	<array>
-		<string>___PACKAGENAMEASIDENTIFIER___.java:package</string>
-		<string>___PACKAGENAMEASIDENTIFIER___.java:comments</string>
-		<string>___PACKAGENAMEASIDENTIFIER___.java:class</string>
-		<string>___PACKAGENAMEASIDENTIFIER___.lcidl:java</string>
+		<dict>
+			<key>Identifier</key>
+			<string>languageChoice</string>
+			<key>Values</key>
+			<array>
+				<string>Java</string>
+				<string>C</string>
+				<string>C++</string>
+			</array>
+			<key>Default</key>
+			<string>Java</string>
+			<key>Units</key>
+			<dict>
+				<key>C</key>
+				<array>
+					<dict>
+						<key>RequiredOptions</key>
+						<dict>
+								<key>isLCIDL</key>
+								<string>true</string>
+						</dict>
+						<key>Project</key>
+						<dict>
+							<key>SharedSettings</key>
+							<dict>
+								<key>ANDROID_SOURCES</key>
+								<string>"$(SRCROOT)/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___.c"</string>
+							</dict>
+						</dict>
+					</dict>
+					<dict>
+						<key>RequiredOptions</key>
+						<dict>
+								<key>isLCIDL</key>
+								<string>false</string>
+						</dict>
+						<key>Project</key>
+						<dict>
+							<key>SharedSettings</key>
+							<dict>
+								<key>ANDROID_SOURCES</key>
+								<string>"$(SRCROOT)/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___.c" "$(SRCROOT)/___PACKAGENAMEASIDENTIFIER___/external.c"</string>
+							</dict>
+						</dict>
+					</dict>
+				</array>
+				<key>C++</key>
+				<array>
+					<dict>
+						<key>RequiredOptions</key>
+						<dict>
+								<key>isLCIDL</key>
+								<string>true</string>
+						</dict>
+						<key>Project</key>
+						<dict>
+							<key>SharedSettings</key>
+							<dict>
+								<key>ANDROID_SOURCES</key>
+								<string>"$(SRCROOT)/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___.cpp"</string>
+							</dict>
+						</dict>
+					</dict>
+					<dict>
+						<key>RequiredOptions</key>
+						<dict>
+								<key>isLCIDL</key>
+								<string>false</string>
+						</dict>
+						<key>Project</key>
+						<dict>
+							<key>SharedSettings</key>
+							<dict>
+								<key>ANDROID_SOURCES</key>
+								<string>"$(SRCROOT)/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___.cpp" "$(SRCROOT)/___PACKAGENAMEASIDENTIFIER___/external.c"</string>
+							</dict>
+						</dict>
+					</dict>
+				</array>
+			</dict>
+    </dict>
 	</array>
 	<key>Project</key>
 	<dict>
@@ -90,11 +169,9 @@ use none on ios, mac, windows, linux
 			<key>TargetIdentifier</key>
 			<string>com.merg.livecode.externals.android</string>
 		  <key>Name</key>
-			<string>___PACKAGENAMEASIDENTIFIER___</string>
+			<string>___PACKAGENAMEASIDENTIFIER___-Android</string>
 			<key>SharedSettings</key>
 			<dict>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
 				<key>ALWAYS_SEARCH_USER_PATHS</key>
 				<string>NO</string>
 		</dict>

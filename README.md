@@ -10,7 +10,7 @@ Xcode.
 
 Check out my externals at [mergExt.com](http://mergext.com)
 
-# Setting up lcidlc
+## Setting up lcidlc
 
 These templates require the use of the lcidlc compiler and shell scripts found
 in the [LiveCode repo](https://github.com/livecode/livecode/)
@@ -23,7 +23,7 @@ look for the shell scripts in `~/livecode/lcidlc/` and headers in
 then change `LIVECODE_REPO_ROOT` in the project build settings before trying to
 build.
 
-# Installing the templates
+## Installing the templates
 
 ````
 cd ~

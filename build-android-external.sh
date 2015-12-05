@@ -25,9 +25,14 @@ JAR=$JAVA_SDK/bin/jar
 
 mkdir -p "$BUILT_PRODUCTS_DIR/native"
 
-echo "Building external stubs…"
-mkdir -p "$DERIVED_FILE_DIR"
-lcidlc "$SRCROOT/$PRODUCT_NAME/$PRODUCT_NAME.lcidl" "$DERIVED_FILE_DIR/"
+if [[ -f "$SRCROOT/$PRODUCT_NAME/$PRODUCT_NAME.lcidl" ]]; then
+	echo "Building external stubs…"
+	mkdir -p "$DERIVED_FILE_DIR"
+	lcidlc "$SRCROOT/$PRODUCT_NAME/$PRODUCT_NAME.lcidl" "$DERIVED_FILE_DIR/"
+
+	ANDROID_SOURCES="$DERIVED_FILE_DIR/$LOCAL_MODULE.lcidl.cpp $ANDROID_SOURCES"
+fi
+
 
 echo "Building native code components…"
 export NDK_PROJECT_PATH="$BUILT_PRODUCTS_DIR/native"
@@ -36,18 +41,20 @@ if [ $? != 0 ]; then
 	exit $?
 fi
 
-echo "Building java classes components…"
-mkdir -p "$BUILT_PRODUCTS_DIR/classes"
-"$JAVAC" -d "$BUILT_PRODUCTS_DIR/classes" -cp "$CLASSPATH" -sourcepath "$SRCROOT/$PRODUCT_NAME" "$SRCROOT/$PRODUCT_NAME/$PRODUCT_NAME.java" "$DERIVED_FILE_DIR/LC.java"
-if [ $? != 0 ]; then
-	exit $?
-fi
-
-echo "Building jar…"
 mkdir -p "$SRCROOT/binaries/Android"
-"$JAR" cf "$SRCROOT/binaries/Android/Classes" -C "$BUILT_PRODUCTS_DIR/classes" .
-if [ $? != 0 ]; then
-	exit $?
+if [[ -f "$SRCROOT/$PRODUCT_NAME/$PRODUCT_NAME.java" ]]; then
+	echo "Building java classes components…"
+	mkdir -p "$BUILT_PRODUCTS_DIR/classes"
+	"$JAVAC" -d "$BUILT_PRODUCTS_DIR/classes" -cp "$CLASSPATH" -sourcepath "$SRCROOT/$PRODUCT_NAME" "$SRCROOT/$PRODUCT_NAME/$PRODUCT_NAME.java" "$DERIVED_FILE_DIR/LC.java"
+	if [ $? != 0 ]; then
+		exit $?
+	fi
+
+	echo "Building jar…"
+	"$JAR" cf "$SRCROOT/binaries/Android/Classes" -C "$BUILT_PRODUCTS_DIR/classes" .
+	if [ $? != 0 ]; then
+		exit $?
+	fi
 fi
 
 echo "Building lcext archive…"

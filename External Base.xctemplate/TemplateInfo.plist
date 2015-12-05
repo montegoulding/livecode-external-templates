@@ -94,17 +94,77 @@ on shutdown call ___PACKAGENAMEASIDENTIFIER___Shutdown
 			<key>Type</key>
 			<string>text</string>
 		</dict>
+		<dict>
+      <key>Identifier</key>
+      <string>isLCIDL</string>
+      <key>Name</key>
+      <string>Use LCIDL</string>
+      <key>NotPersisted</key>
+      <false/>
+      <key>Type</key>
+      <string>checkbox</string>
+      <key>Default</key>
+      <string>true</string>
+      <key>Units</key>
+      <dict>
+          <key>true</key>
+          <dict>
+            <key>Nodes</key>
+            <array>
+							<string>___PACKAGENAMEASIDENTIFIER___.lcidl:comments</string>
+							<string>___PACKAGENAMEASIDENTIFIER___.lcidl:base</string>
+						</array>
+          </dict>
+					<key>false</key>
+					<dict>
+						<key>Definitions</key>
+						<dict>
+							<key>external.c</key>
+							<dict>
+								<key>Path</key>
+								<string>external.c</string>
+								<key>TargetIndices</key>
+								<array>
+									<string>0</string>
+								</array>
+							</dict>
+							<key>external.h</key>
+							<dict>
+								<key>Path</key>
+								<string>external.h</string>
+								<key>TargetIndices</key>
+								<array/>
+							</dict>
+						</dict>
+						<key>Nodes</key>
+						<array>
+							<string>external.c</string>
+							<string>external.h</string>
+						</array>
+						<key>Project</key>
+						<dict>
+							<key>SharedSettings</key>
+							<dict>
+								<key>SYMBOLS</key>
+								<string>_getXtable</string>
+							</dict>
+						</dict>
+					</dict>
+      </dict>
+    </dict>
 	</array>
 	<key>Nodes</key>
 	<array>
-		<string>___PACKAGENAMEASIDENTIFIER___.lcidl:comments</string>
-		<string>___PACKAGENAMEASIDENTIFIER___.lcidl:base</string>
 		<string>___PACKAGENAMEASIDENTIFIER___.livecode</string>
 	</array>
 	<key>Project</key>
 	<dict>
 		<key>SharedSettings</key>
 		<dict>
+			<key>PRODUCT_NAME</key>
+			<string>___PACKAGENAMEASIDENTIFIER___</string>
+			<key>ALWAYS_SEARCH_USER_PATHS</key>
+			<string>NO</string>
 			<key>LIVECODE_EXTERNAL_TEMPLATES_DIR</key>
 			<string>$(HOME)/livecode-xcode-templates</string>
 			<key>LIVECODE_REPO_ROOT</key>
@@ -113,6 +173,12 @@ on shutdown call ___PACKAGENAMEASIDENTIFIER___Shutdown
 			<string>___PACKAGENAMEASIDENTIFIER___</string>
 			<key>LIVECODE_TEST_STACK</key>
 			<string>$(SRCROOT)/___PACKAGENAME___/___PACKAGENAMEASIDENTIFIER___.livecode</string>
+			<key>CLANG_CXX_LIBRARY</key>
+			<string>libc++</string>
+			<key>ENABLE_BITCODE</key>
+			<string>NO</string>
+			<key>HEADER_SEARCH_PATHS</key>
+			<string>"$(LIVECODE_REPO_ROOT)/lcidlc/include"</string>
 		</dict>
 		<key>Configurations</key>
 		<dict>
