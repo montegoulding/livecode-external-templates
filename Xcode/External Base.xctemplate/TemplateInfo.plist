@@ -166,7 +166,7 @@ on shutdown call ___PACKAGENAMEASIDENTIFIER___Shutdown
 			<key>ALWAYS_SEARCH_USER_PATHS</key>
 			<string>NO</string>
 			<key>LIVECODE_EXTERNAL_TEMPLATES_DIR</key>
-			<string>$(HOME)/livecode-xcode-templates</string>
+			<string>$(HOME)/livecode-external-templates</string>
 			<key>LIVECODE_REPO_ROOT</key>
 			<string>$(HOME)/livecode</string>
 			<key>LIVECODE_TEST_EXTERNAL</key>
