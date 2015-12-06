@@ -140,11 +140,11 @@ use none on ios, mac, windows, linux
 			<key>ANDROID_NDK_ROOT</key>
 			<string>$(ANDROID_TOOLCHAIN)/android-ndk</string>
 			<key>ANDROID_EXTERNAL_BUILD_SCRIPT</key>
-			<string>$(LIVECODE_EXTERNAL_TEMPLATES_DIR)/build-android-external.sh</string>
+			<string>$(LIVECODE_EXTERNAL_TEMPLATES_DIR)/Android/build-android-external.sh</string>
 			<key>NDK_APPLICATION_MK</key>
-			<string>$(LIVECODE_EXTERNAL_TEMPLATES_DIR)/Application.mk</string>
+			<string>$(LIVECODE_EXTERNAL_TEMPLATES_DIR)/Android/Application.mk</string>
 			<key>APP_BUILD_SCRIPT</key>
-			<string>$(LIVECODE_EXTERNAL_TEMPLATES_DIR)/Android.mk</string>
+			<string>$(LIVECODE_EXTERNAL_TEMPLATES_DIR)/Android/Android.mk</string>
 			<key>ANDROID_TARGET_PLATFORM</key>
 			<string>android-8</string>
 		</dict>
