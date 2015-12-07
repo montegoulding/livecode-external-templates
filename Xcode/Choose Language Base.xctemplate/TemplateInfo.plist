@@ -32,6 +32,10 @@ void ___PACKAGENAMEASIDENTIFIER___Shutdown(void)
 
 }
 			</string>
+			<key>*:livecodeapi</key>
+			<string>
+#include "LiveCode.h"
+			</string>
 			<key>*:externalv0</key>
 			<string>
 #include "external.h"
@@ -121,6 +125,7 @@ EXTERNAL_END_DECLARATIONS
 						<array>
 							<string>___PACKAGENAMEASIDENTIFIER___.lcidl:ObjectiveC</string>
 							<string>___PACKAGENAMEASIDENTIFIER___.m:foundation</string>
+							<string>___PACKAGENAMEASIDENTIFIER___.m:livecodeapi</string>
 							<string>___PACKAGENAMEASIDENTIFIER___.m:hooks</string>
 						</array>
 					</dict>
@@ -171,6 +176,7 @@ EXTERNAL_END_DECLARATIONS
 								<string>___PACKAGENAMEASIDENTIFIER___.lcidl:ObjectiveC</string>
 								<string>___PACKAGENAMEASIDENTIFIER___.lcidl:CPP</string>
 								<string>___PACKAGENAMEASIDENTIFIER___.mm:foundation</string>
+								<string>___PACKAGENAMEASIDENTIFIER___.mm:livecodeapi</string>
 								<string>___PACKAGENAMEASIDENTIFIER___.mm:hooks</string>
 							</array>
 						</dict>
@@ -219,6 +225,7 @@ EXTERNAL_END_DECLARATIONS
 							<key>Nodes</key>
 							<array>
 								<string>___PACKAGENAMEASIDENTIFIER___.c:stdbool</string>
+								<string>___PACKAGENAMEASIDENTIFIER___.c:livecodeapi</string>
 								<string>___PACKAGENAMEASIDENTIFIER___.c:hooks</string>
 							</array>
 						</dict>
@@ -268,6 +275,7 @@ EXTERNAL_END_DECLARATIONS
 							<array>
 								<string>___PACKAGENAMEASIDENTIFIER___.lcidl:CPP</string>
 								<string>___PACKAGENAMEASIDENTIFIER___.cpp:stdbool</string>
+								<string>___PACKAGENAMEASIDENTIFIER___.cpp:livecodeapi</string>
 								<string>___PACKAGENAMEASIDENTIFIER___.cpp:hooks</string>
 							</array>
 						</dict>
