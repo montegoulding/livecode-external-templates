@@ -29,13 +29,13 @@
 		</dict>
 		<key>___PACKAGENAMEASIDENTIFIER___.java:package</key>
 		<string>
-package ___VARIABLE_externalIdentifier___;
+package ___VARIABLE_bundleIdentifierPrefix:bundleIdentifier___.___PACKAGENAMEASIDENTIFIER___;
 		</string>
 		<key>___PACKAGENAMEASIDENTIFIER___.java:class</key>
 		<string>
-public class ___PROJECTNAMEASIDENTIFIER___ {
+public class ___PACKAGENAMEASIDENTIFIER___ {
 
-  private static final String TAG = ___PROJECTNAMEASIDENTIFIER___.class.getSimpleName();
+  private static final String TAG = ___PACKAGENAMEASIDENTIFIER___.class.getSimpleName();
 
 }
 		</string>

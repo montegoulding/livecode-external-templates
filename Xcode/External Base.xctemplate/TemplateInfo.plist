@@ -11,7 +11,9 @@
 			<key>*:comments</key>
 			<string>//
 //  ___FILENAME___
+//
 //  ___PROJECTNAME___
+//  ___VARIABLE_bundleIdentifierPrefix:bundleIdentifier___.___PACKAGENAMEASIDENTIFIER___
 //
 //  Created by ___FULLUSERNAME___ on ___DATE___.
 //___COPYRIGHT___
@@ -32,7 +34,7 @@
 			</dict>
 			<key>___PACKAGENAMEASIDENTIFIER___.lcidl:base</key>
 			<string>
-external ___VARIABLE_externalIdentifier___
+external ___VARIABLE_bundleIdentifierPrefix:bundleIdentifier___.___PACKAGENAMEASIDENTIFIER___
 			</string>
 			<key>___PACKAGENAMEASIDENTIFIER___.lcidl:lcidlhooks</key>
 			<string>
@@ -79,21 +81,33 @@ on shutdown call ___PACKAGENAMEASIDENTIFIER___Shutdown
 			<string>___FULLUSERNAME___</string>
 		</dict>
 		<dict>
-			<key>Identifier</key>
-			<string>externalIdentifier</string>
-			<key>Required</key>
-			<true/>
-			<key>Name</key>
-			<string>External Identifier:</string>
-			<key>Description</key>
-			<string>The identfier of your external</string>
-			<key>Default</key>
-			<string>com.yourcompany.yourexternal</string>
-			<key>EmptyReplacement</key>
-			<string>com.yourcompany.yourexternal</string>
-			<key>Type</key>
-			<string>text</string>
-		</dict>
+        <key>Identifier</key>
+        <string>bundleIdentifierPrefix</string>
+        <key>Required</key>
+        <true/>
+        <key>Name</key>
+        <string>Organization Identifier:</string>
+        <key>Description</key>
+        <string>Your organization&apos;s bundle identifier prefix</string>
+        <key>EmptyReplacement</key>
+        <string>com.yourcompany</string>
+        <key>Type</key>
+        <string>text</string>
+    </dict>
+    <dict>
+        <key>Identifier</key>
+        <string>bundleIdentifier</string>
+        <key>Name</key>
+        <string>External Identifier:</string>
+        <key>NotPersisted</key>
+        <true/>
+        <key>Description</key>
+        <string>Your new product&apos;s bundle identifier</string>
+        <key>Default</key>
+        <string>___VARIABLE_bundleIdentifierPrefix:bundleIdentifier___.___VARIABLE_productName:RFC1034Identifier___</string>
+        <key>Type</key>
+        <string>static</string>
+    </dict>
 		<dict>
       <key>Identifier</key>
       <string>isLCIDL</string>
