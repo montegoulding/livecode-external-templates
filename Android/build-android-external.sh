@@ -2,6 +2,7 @@
 
 export DEBUGGABLE_FLAG=false
 export DEBUG_FLAG=0
+export ANDROID=1
 
 JAVA_SDK=`/usr/libexec/java_home`
 JCOUNT=4
@@ -27,16 +28,14 @@ mkdir -p "$BUILT_PRODUCTS_DIR/native"
 
 if [[ -f "$SRCROOT/$PRODUCT_NAME/$PRODUCT_NAME.lcidl" ]]; then
 	echo "Building external stubs…"
-	mkdir -p "$DERIVED_FILE_DIR"
-	lcidlc "$SRCROOT/$PRODUCT_NAME/$PRODUCT_NAME.lcidl" "$DERIVED_FILE_DIR/"
+	mkdir -p "$SRCROOT/$PRODUCT_NAME/derived"
+	lcidlc "$SRCROOT/$PRODUCT_NAME/$PRODUCT_NAME.lcidl" "$SRCROOT/$PRODUCT_NAME/derived/"
 
-	ANDROID_SOURCES="$DERIVED_FILE_DIR/$PRODUCT_NAME.lcidl.cpp $ANDROID_SOURCES"
+	ANDROID_SOURCES="derived/$PRODUCT_NAME.lcidl.cpp $ANDROID_SOURCES"
 fi
 
-
 echo "Building native code components…"
-export NDK_PROJECT_PATH="$BUILT_PRODUCTS_DIR/native"
-$NDKBUILD NDK_DEBUG=$DEBUG_FLAG NDK_APP_DEBUGGABLE=$DEBUGGABLE_FLAG NDK_APPLICATION_MK="$NDK_APPLICATION_MK" APP_BUILD_SCRIPT="$APP_BUILD_SCRIPT" -j $JCOUNT -s
+$NDKBUILD ANDROID_SOURCES="$ANDROID_SOURCES" NDK_DEBUG=$DEBUG_FLAG NDK_APP_DEBUGGABLE=$DEBUGGABLE_FLAG NDK_APPLICATION_MK="$NDK_APPLICATION_MK" APP_BUILD_SCRIPT="$APP_BUILD_SCRIPT" NDK_PROJECT_PATH="$BUILT_PRODUCTS_DIR/native" APP_PLATFORM="$ANDROID_TARGET_PLATFORM" -j $JCOUNT -s
 if [ $? != 0 ]; then
 	exit $?
 fi
@@ -45,7 +44,7 @@ mkdir -p "$SRCROOT/binaries/Android"
 if [[ -f "$SRCROOT/$PRODUCT_NAME/$PRODUCT_NAME.java" ]]; then
 	echo "Building java classes components…"
 	mkdir -p "$BUILT_PRODUCTS_DIR/classes"
-	"$JAVAC" -d "$BUILT_PRODUCTS_DIR/classes" -cp "$CLASSPATH" -sourcepath "$SRCROOT/$PRODUCT_NAME" "$SRCROOT/$PRODUCT_NAME/$PRODUCT_NAME.java" "$DERIVED_FILE_DIR/LC.java"
+	"$JAVAC" -target 1.5 -source 1.5 -Xlint:none -d "$BUILT_PRODUCTS_DIR/classes" -cp "$CLASSPATH" -sourcepath "$SRCROOT/$PRODUCT_NAME" "$SRCROOT/$PRODUCT_NAME/$PRODUCT_NAME.java" "$SRCROOT/$PRODUCT_NAME/derived/LC.java"
 	if [ $? != 0 ]; then
 		exit $?
 	fi

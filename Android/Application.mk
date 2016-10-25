@@ -4,8 +4,6 @@ APP_PLATFORM := android-8
 
 APP_PROJECT_PATH := $(NDK_PROJECT_PATH)
 
-APP_STL := gnustl_static
-
 ifeq ($(CONFIGURATION),Debug)
 
 APP_OPTIM := debug
